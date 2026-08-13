@@ -1,29 +1,31 @@
+import java.util.*;
+
 public class SecondMax{
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
 
-        int[] arr = {10, 5, 20, 8, 15};
+        System.out.print("Enter size of the array : ");
+        int n = sc.nextInt();
 
-        int firstMax = arr[0];
-        int secondMax = arr[1];
+        int arr[] = new int[n];
 
-        if (secondMax > firstMax) {
-            int temp = firstMax;
-            firstMax = secondMax;
-            secondMax = temp;
+        System.out.println("Start Entering The Elements: ");
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
         }
 
-        for (int i = 2; i < arr.length; i++) {
+        int firstMax = arr[0];
+        int secondMax = Integer.MIN_VALUE;
 
-            if (arr[i] > firstMax) {
+        for(int i=1; i<n; i++){
+            if(arr[i] >= firstMax){
                 secondMax = firstMax;
                 firstMax = arr[i];
             }
-            else if (arr[i] > secondMax) {
+            else if(arr[i] >= secondMax){
                 secondMax = arr[i];
             }
         }
-
-        System.out.println("Maximum = " + firstMax);
-        System.out.println("Second Maximum = " + secondMax);
+        System.out.println("Second Max is : " + secondMax);
     }
 }
